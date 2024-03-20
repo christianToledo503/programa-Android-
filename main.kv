@@ -1,0 +1,488 @@
+# -*- coding: utf-8 -*-
+#:kivy 1.9.2
+<MainWid>:
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<StartWid>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: .3, .3, .9
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        size_hint_y: .7
+    Button:
+        size_hint_y: .1
+        text: 'Conectar a base de datos'
+        on_press: root.create_database()
+    Button:
+        size_hint_y: .1
+        text: 'Ir al Carrito'
+        on_press: root.go_to_carrito()
+    BoxLayout:
+        size_hint_y: .2
+
+
+<DataWid>:
+    data: ''
+    data_id: ''
+    data_imagen:''
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    Label:
+        size_hint_x: 0.9
+        size_font: self.width * 0.4
+        text: root.data
+    BoxLayout:
+        size_hint_x: 0.3
+        # Agrega la imagen usando el widget Image
+        Image:
+            source: root.data_imagen
+            allow_stretch: True
+            keep_ratio: True
+            
+    Button:
+        size_hint_x: 0.1
+        text: 'Edit'
+        on_press: root.update_data(root.data_id)
+        
+<NewDataButton>:
+    font_size: self.height * 0.5
+    text: '+'
+    on_press: self.create_new_product()
+
+<DataBaseWid>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: .3, .3, .9
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    ScrollView:
+        size: self.size
+        GridLayout:
+            id: container
+            padding: [10, 10, 10, 10]
+            spacing: 5
+            size_hint_y: None
+            cols: 1
+            row_default_height: root.height * 0.2
+            height: self.minimum_height
+    BoxLayout:
+        padding: [5, 5, 5, 5]
+        spacing: 5
+        size_hint: 1,0.08
+        TextInput:
+            size_hint: 0.8, 0.9
+            pos_hint: {'left': 1, 'top': 1}
+            id: ti_busca
+            multiline: False
+            hint_text: 'buscar...'
+            on_text: root.filter_widgets(ti_busca.text)
+
+
+            #on_text: root.on_search_text_change(self, self.text)
+            #on_text: root.on_search_text_change(ti_busca.text)
+        Button:
+            id:id_canti
+            size_hint: None, None
+            size: 45, 45
+            pos_hint: {'right': 1, 'top': 1}
+            font_size: self.height * 0.5
+            color: 0, 1, 0, 1
+            text: '+'
+            on_press: root.go_to_bottom()
+        Button:
+            id:id_volver 
+            size_hint: None, None
+            size: 45, 45
+            pos_hint: {'right': 1, 'top': 1}
+            font_size: self.height * 0.5
+            color: 1, 0, 0, 1
+            text: 'X'
+            background_color: (1, 0, 0, 1)
+            on_press: root.parent.parent.goto_start()
+        
+        
+    
+
+<LeftLabel@Label>:
+    text_size: self.size
+    halign: 'left'
+
+<MessagePopup>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            id: message
+            size_hint: 1, 0.8
+            text: ''
+        Button:
+            size_hint: 1, 0.2
+            text: 'Regresar'
+            on_press: root.dismiss()
+
+<InsertDataWid>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    LeftLabel: # ---------- ID
+        text: ' Código:'
+    IntInput:
+        id: ti_codigo
+        multiline: False
+        hint_text: 'código'
+
+    LeftLabel: # ---------- Nombre
+        text: ' Producto:'
+    TextInput:
+        id: ti_producto
+        multiline: False
+        hint_text: 'producto'
+
+    LeftLabel: # ---------- Marca
+        text: ' Costo:'
+    FloatInput:
+        id: ti_costo
+        multiline: False
+        hint_text: 'costo'
+
+    LeftLabel: # ---------- Costo
+        text: ' Precio:'
+    FloatInput:
+        id: ti_precio
+        multiline: False
+        hint_text: 'Precio'
+
+    LeftLabel:  # ---------- Alamcen
+        text: ' Cantidad:'
+    IntInput:
+        id: ti_cantidad
+        multiline: False
+        hint_text: 'cantidad'
+
+    LeftLabel:  # ---------- imagen
+        text: ' Imagen:'
+    TextInput:
+        id: ti_imagen
+        multiline: False
+        hint_text: 'ruta imagen'
+    BoxLayout:
+        size_hint_y: 5
+    BoxLayout: # ---------- Crear Salir
+        Button:
+            text: 'Crear'
+            on_press: root.insert_data()
+        Button:
+            text: 'Salir'
+            on_press: root.back_to_dbw()
+
+<UpdateDataWid>:
+    orientation: 'vertical'
+    data_id: ''
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    LeftLabel: # ---------- ID
+        text: ' Código:'
+    IntInput:
+        id: ti_codigo
+        multiline: False
+        hint_text: 'código'
+    LeftLabel: # ---------- Nombre
+        text: ' Producto:'
+    TextInput:
+        id: ti_producto
+        multiline: False
+        hint_text: 'producto'
+    LeftLabel: # ---------- Marca
+        text: ' Costo:'
+    FloatInput:
+        id: ti_costo
+        multiline: False
+        hint_text: 'costo'
+    LeftLabel: # ---------- Costo
+        text: ' Precio:'
+    FloatInput:
+        id: ti_precio
+        multiline: False
+        hint_text: 'Precio'
+    LeftLabel:  # ---------- cantidad
+        text: ' Cantidad:'
+    IntInput:
+        id: ti_cantidad
+        multiline: False
+
+    LeftLabel:  # ----------imagen
+        text: ' Imagen:'
+    TextInput:
+        id: ti_imagen
+        multiline: False
+        hint_text:'ruta'
+    BoxLayout:
+        size_hint_y: 4
+    BoxLayout:
+        Button:
+            text: 'Actualizar'
+            on_press: root.update_data()
+        Button:
+            text: 'Eliminar'
+            on_press: root.delete_data()
+    Button: # ---------- Actualizar, Salir
+        text: 'Salir'
+        on_press: root.mainwid.goto_database()
+
+
+
+<CarritoWid>:
+    check_marked: False
+    orientation: 'vertical'
+    data: ''
+    data_id: ''
+    data_imagen: ''
+    
+    canvas:
+        Color:
+            rgb: .3, .3, .9
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            
+    BoxLayout:
+        size_hint: (1,0.82)
+        ScrollView:
+            size: self.size
+            
+            GridLayout:
+            
+                id: container
+                padding: [10, 10, 10, 10]
+                spacing: 5
+                size_hint_y: None
+                cols: 1
+                row_default_height: root.height * 0.2
+                height: self.minimum_height
+
+                
+                Label:
+                    size_hint_x: 0.9
+                    text: root.data
+
+    
+             
+    BoxLayout:
+    # caja de precio 
+        padding: 5
+        spacing: 5
+        size_hint: (1, 0.1)
+        canvas:
+            Color:
+                rgb: 0.3, 0.4, 0.6
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        #BoxLayout:
+        #    orientation: 'vertical'
+        # caja de precio 
+            
+        #    size_hint: (0.1, 0.88)
+        #    canvas:
+        #        Color:
+        #            rgb: 1, 1, 0
+        #        Rectangle:
+        #            pos: self.pos
+        #            size: self.size   
+            #Button:
+            #    id:id_aumentar 
+            #    padding: 5
+            #    spacing: 5
+            #    size_hint: None, None
+            #    size: 28, 28
+            #    pos_hint: {'center': 1, 'center': 1}
+                
+            #    font_size: self.height * 0.7
+            #    text: '+'
+            #    background_color: (0, 1, 0, 1)
+            #    color: 1, 1, 1
+                #on_press: root.on_boton_presionado()
+
+            #Button: 
+            #    padding: 5
+            #    spacing: 5
+            #    size_hint: None, None
+            #    size: 28, 28
+            #    pos_hint: {'center': 1, 'center': 1}
+
+            #    font_size: self.height * 0.7
+            #    text: '-'
+            #    background_color: (1, 0, 0, 1)
+            #    color: 1, 1, 1
+        Label: 
+            id: label_total
+            size_hint_x: 0.9
+            size_font: self.width * 0.3
+            font_size: 24
+            color: 0.9176, 0.9451, 0.0157 
+            text: '$ 0'
+            pos_hint: {'left': 1, 'center': 1}
+        Button: 
+            size_hint: None, None
+            size: 50, 50
+            pos_hint: {'right': 1, 'center': 1}
+            font_size: self.height * 0.5
+            color: 1, 1, 1
+            #background_normal: 'carritoA.png'
+            #background_down: 'carritoB.png' 
+            text:"$"
+            background_color: 0.9176, 0.9451, 0.0157,1
+            #on_press: root.actualizar_total()
+        Button:
+            size_hint: None, None
+            size: 50, 50
+            pos_hint: {'right': 1, 'center': 1}
+            font_size: self.height * 0.5
+            color: 1, 1, 1
+            text: 'x'
+            background_color:1,0,0
+            on_press: root.mainwid.goto_start()
+    BoxLayout:
+        padding: 5
+        spacing: 5
+        size_hint: (1, 0.08)
+        canvas:
+            Color:
+                rgb: 0.4, 0.1, 0.8
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        TextInput:
+            padding: 10
+            spacing: 10
+            text_size: self.size
+            halign: 'left'
+            size_hint: (0.8, 0.90)
+            id: ti_ingresar
+            multiline: False
+            hint_text: 'ingresar codigo'
+        Button:
+            size_hint: None, None
+            size: 50, 50
+            pos_hint: {'right': 1, 'center': 1}
+            font_size: self.height * 0.5
+            color: 0, 1, 0, 1
+            text: '#'
+            on_press: root.escanear()
+            # Definir el botón con imágenes
+    
+            #background_normal: 'escanerColor.jpg'
+            #background_down: 'escanerColorBlanco.jpg'
+        Button:
+            # ---------- Buscar
+            size_hint: None, None
+            size: 50, 50
+            pos_hint: {'right': 1, 'center': 1}
+            font_size: self.height * 0.5
+            color: 0, 1, 0, 1
+            text: '+'
+            on_press: root.agregar()
+
+    
+          
+<DataWid2>:
+#<SwipeToDeleteWidget>:
+    data: ''
+    data_id: ''
+    data_imagen:''
+    precio_inv:0
+    
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            
+    BoxLayout:
+
+        orientation: 'vertical'
+        size_hint_x: 0.12
+        BoxLayout:
+
+            Label:
+                id: agregar
+                size_font: self.width * 0.4
+                font_size: 36
+                text: '+'
+                color: (0, 1, 0, 1)
+            
+        
+            CheckBox:  # Agregar CheckBox aquí
+                id: id_tilde
+                size_hint_x: 1
+                pos_hint: {'top': 1, 'left': 1}
+                on_active: root.on_checkbox_active(self, self.active)
+        BoxLayout:
+            Label:
+                id: quitar
+                size_font: self.width * 0.4
+                font_size: 36
+                text: '-'
+                color: (1, 0, 0, 1)
+            CheckBox:  # Agregar CheckBox aquí
+                id: id_tilde
+                size_hint_x: 1
+                pos_hint: {'top': 1, 'left': 1}
+                on_active: root.on_checkbox_active_resta(self, self.active)
+
+                
+    Label:
+        id: id_cantidad
+        size_hint_x: 0.1
+        size_font: self.width * 0.4
+        font_size: 36
+        text: '1'
+        color: (0, 1, 0, 1)
+        
+            
+    Label:
+        size_hint_x: 0.57
+        size_font: self.width * 0.4
+        text: root.data
+    BoxLayout:
+        size_hint_x: 0.25
+        # Agrega la imagen usando el widget Image
+        Image:
+            source: root.data_imagen
+            allow_stretch: True
+            keep_ratio: True
+#)            
+    #Button:
+    #    id:id_eliminar
+    #    size_hint_x: 0.08
+    #    font_size: self.height * 0.5
+    #    text: '-'
+    #    color: 1, 0, 0, 1
+    
+    

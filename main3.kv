@@ -1,0 +1,58 @@
+<DismissibleBoxLayout>:
+    canvas:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.12
+        BoxLayout:
+
+            Label:
+                id: agregar
+                size_font: self.width * 0.4
+                font_size: 36
+                text: '+'
+                color: (0, 1, 0, 1)
+
+            CheckBox:
+                id: id_tilde
+                size_hint_x: 1
+                pos_hint: {'top': 1, 'left': 1}
+                on_active: root.on_checkbox_active(self, self.active)
+
+        BoxLayout:
+            Label:
+                id: quitar
+                size_font: self.width * 0.4
+                font_size: 36
+                text: '-'
+                color: (1, 0, 0, 1)
+            CheckBox:
+                id: id_tilde
+                size_hint_x: 1
+                pos_hint: {'top': 1, 'left': 1}
+                on_active: root.on_checkbox_active_resta(self, self.active)
+
+    Label:
+        id: id_cantidad
+        size_hint_x: 0.1
+        size_font: self.width * 0.4
+        font_size: 36
+        text: '1'
+        color: (0, 1, 0, 1)
+
+    Label:
+        size_hint_x: 0.57
+        size_font: self.width * 0.4
+        text: root.data
+
+    BoxLayout:
+        size_hint_x: 0.25
+        Image:
+            source: root.data_imagen
+            allow_stretch: True
+            keep_ratio: True

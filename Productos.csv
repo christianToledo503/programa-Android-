@@ -1,0 +1,24 @@
+id,codigo,producto,costo,precio,cantidad,imagen
+1,122,Arroz integral 500g,300.0,8000.0,6,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\arroz.png
+3,1122,mermelada 500gr,1500.0,28000.0,12,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\mermelada.png
+4,4,lavandina 1L,4000.0,4444.0,2,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\lavandina.png
+5,6,papas pringlrst,6000.0,3999.0,3,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\papas.png
+6,7,luigi,4000.0,33333.0,2,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\luigi.png
+7,8,luigui2,5000.0,40000.0,2,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\luigi2.png
+8,10,bananas,1000.0,2000.0,20,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\bananas.png
+9,11,manzanas,800.0,2000.0,30,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\manzanas.png
+10,3330020444,FANTA,1850.0,2300.0,5,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\fanta.png
+11,3330030444,ciruelas,1290.0,3800.0,20,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\ciruelas.png
+12,1110060222,lavandina Ayudin,400.0,800.0,30,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\lavandina.png
+13,1110050222,lechuga,1400.0,2000.0,40,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\lechuga.png
+14,3330040444,Aceite Natura,2200.0,2600.0,23,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\aceite2.png
+15,1110010222,papel Campanita,1250.0,1600.0,36,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\papeles.png
+16,1110030222,Manzanas Verdes,3400.0,4000.0,12,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\manzanasV.png
+17,3330060444,Bananas,1500.0,2600.0,56,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\bananas.png
+18,1110020222,melones,4000.0,5000.0,25,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\melon.png
+19,1110040222,Manzanas Rojas,3000.0,4500.0,7,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\manzanas.png
+20,3330100444,manteca,400.0,700.0,20,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\manteca.png
+21,3330050444,bifes,7000.0,9000.0,29,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\carne.png
+22,3330070444,frutillas,3000.0,4000.0,26,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\frutillas.png
+23,3330090444,mermelada,2600.0,3400.0,25,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\mermelada.png
+24,3330080444,anana,4800.0,6000.0,6,C:\Users\toled\Dropbox\Proyecto Python\Android\INVENTARIO\Kivy SQLite FUNCIONA3\imagenes\anana.png
